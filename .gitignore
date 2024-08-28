@@ -1,3 +1,5 @@
 venv/
 media/
 photos/
+__pycache__/
+*.pyc
