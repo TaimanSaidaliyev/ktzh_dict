@@ -54,7 +54,7 @@ class EmployeeStatus(models.Model):
 class Division(TimeStampedModel):
     serial_number = models.PositiveIntegerField(verbose_name="Порядковый номер", blank=True, null=True)
     name = models.CharField(max_length=100, verbose_name="Название отдела")
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, verbose_name="Департамент", related_name="divisions")
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, verbose_name="Департамент")
 
     def __str__(self):
         return f"{self.name} (Dept: {self.department.name})"
@@ -63,7 +63,6 @@ class Division(TimeStampedModel):
         ordering = ['serial_number']
         verbose_name = "Отдел"
         verbose_name_plural = "Отделы"
-        unique_together = ('department', 'serial_number')
 
 
 class Employee(TimeStampedModel):
