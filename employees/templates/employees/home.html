@@ -1,0 +1,58 @@
+{% extends 'employees/base.html' %}
+{% load static %}
+
+{% block title %}Список сотрудников{% endblock %}
+
+{% block content %}
+<div class="mx-auto bg-white p-6 ">
+    <div class="items-center mb-6">
+        <p class="text-base text-gray-500">Для поиска нажмите Ctrl + F5</p>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full bg-white">
+            <thead class="bg-gray-50">
+                <tr class="sticky top-0">
+                    <th class="text-left py-3 px-1 font-semibold text-sm text-gray-600"></th>
+                    <th class="text-left py-3 px-4"></th>
+                    <th class="text-left py-3 px-4 font-semibold text-sm text-gray-600">Сотрудник</th>
+                    <th class="text-left py-3 px-4 font-semibold text-sm text-gray-600 text-center">Статус</th>
+                    <th class="text-left py-3 px-4 font-semibold text-sm text-gray-600 text-center">Почта</th>
+                    <th class="text-left py-3 px-4 font-semibold text-sm text-gray-600 text-center">Рабочий телефон</th>
+                    <th class="text-left py-3 px-4 font-semibold text-sm text-gray-600 text-center">Офис</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700">
+                {% for department in department %}
+                    <tr>
+                        <td colspan="8" class="bg-blue-100 text-gray-800 p-4 text-lg font-semibold">
+                            {{ department.name }}
+                        </td>
+                    </tr>
+                    {% for employee in employees %}
+                        {% if employee.department.id == department.id and employee.division.id == Null %}
+
+                                {% include 'employees/employee_row.html' with employee=employee %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for division in division %}
+                        {% if department.name == division.department.name %}
+                            <tr>
+                                <td colspan="8" class="bg-white text-gray-800 px-4 py-3 border-b font-semibold">
+                                    {{ division.name }}
+                                </td>
+                            </tr>
+
+                            {% for employee in employees %}
+                                {% if employee.department.id == department.id and employee.division.id == division.id %}
+                                    {% include 'employees/employee_row.html' with employee=employee %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

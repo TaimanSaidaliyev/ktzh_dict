@@ -1,0 +1,79 @@
+{% extends 'employees/base.html' %}
+{% load static %}
+
+{% block title %}Сотрудник - {{ employee.last_name }} {{ employee.first_name }} {{ employee.middle_name }}{% endblock %}
+
+{% block content %}
+    <div class="mx-auto bg-white p-6">
+        <a href="/" class="text-cyan-600 font-semibold text-lg">Назад</a>
+        <div class="flex w-full gap-5 mt-5">
+            <div>
+                {% if employee.photo %}
+                    <img src="/media/{{ employee.photo }}" class="object-cover rounded-2xl w-[200px] h-[200px] shadow-md"/>
+                {% else %}
+                    <img src="https://grigorova.com.ua/wp-content/uploads/2016/06/user_no_avatar.png" class="object-cover rounded-2xl w-[200px] h-[200px] shadow-md"/>
+                {% endif %}
+            </div>
+            <div>
+                <div>
+                    <span class="font-semibold text-xl">{{ employee.last_name }} {{ employee.first_name }}
+                        {% if employee.middle_name %}
+                        {{ employee.middle_name }}
+                        {% endif %}
+
+                    </span>
+                    <span class="font-semibold text-xl text-gray-500"> - {{ employee.department }}
+                        {% if employee.division.name %}
+                            - {{ employee.division.name }}
+                        {% endif %}
+                    </span>
+                </div>
+
+                <div class="flex mt-5">
+                    <div class="grid grid-cols-2 h-min gap-4">
+                        {% if employee.birth_date %}
+                        <div>Дата рождения:</div>
+                        <div>{{ employee.birth_date }}</div>
+                        {% endif %}
+
+                        {% if employee.status %}
+                        <div>Статус:</div>
+                        <div>
+                            <div class="inline-flex items-center justify-center h-full">
+                                <div class="bg-[{{ employee.status.color }}] text-sm text-white py-1 px-2 rounded-lg w-min whitespace-nowrap">
+                                    {{ employee.status.name }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if employee.email %}
+                        <div>Электронная почта:</div>
+                        <div>{{ employee.email }}</div>
+                        {% endif %}
+
+                        {% if employee.office_coordinates %}
+                        <div>Координаты офиса:</div>
+                        <div>{{ employee.office_coordinates }}</div>
+                        {% endif %}
+
+                        {% if employee.work_phone %}
+                        <div>Рабочий телефон:</div>
+                        <div>{{ employee.work_phone }}</div>
+                        {% endif %}
+
+                        {% if employee.mobile_phone %}
+                        <div>Мобильный телефон:</div>
+                        <div>{{ employee.mobile_phone }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+{% endblock %}
