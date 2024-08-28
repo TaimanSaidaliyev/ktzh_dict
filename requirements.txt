@@ -1,0 +1,4 @@
+Django
+django-admin-sortable2
+django-autocomplete-light
+Pillow
