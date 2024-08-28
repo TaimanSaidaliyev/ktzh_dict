@@ -1,0 +1,53 @@
+<tr class="border-b hover:bg-gray-200">
+
+    <td></td>
+    <td class="py-3" style="width: 55px;">
+        <a href="/employee/{{ employee.id }}">
+            {% if employee.photo %}
+                <img src="/media/{{ employee.photo }}" class="object-cover rounded-full" style="width: 50px; height: 50px;"/>
+            {% else %}
+                <img src="https://grigorova.com.ua/wp-content/uploads/2016/06/user_no_avatar.png" class="object-cover rounded-full" style="width: 50px; height: 50px;"/>
+            {% endif %}
+        </a>
+    </td>
+    <td class="py-3 px-4">
+        <a href="/employee/{{ employee.id }}">
+            <p class="font-semibold text-cyan-600">
+                {% if employee.first_name %} {{ employee.first_name }}{% endif %}
+                {% if employee.last_name %} {{ employee.last_name }}{% endif %}
+                {% if employee.middle_name %} {{ employee.middle_name }}{% endif %}
+            </p>
+        </a>
+        <p class="text-gray-500">
+            {% if employee.position.name %}
+            {{ employee.position.name }}
+            {% endif %}
+        </p>
+
+    </td>
+    <td class="py-3 px-4 text-center">
+    {% if employee.status %}
+        <div class="inline-flex items-center justify-center h-full">
+            <div class="bg-[{{ employee.status.color }}] text-sm text-white py-1 px-2 rounded-lg w-min whitespace-nowrap">
+                {{ employee.status.name }}
+            </div>
+        </div>
+    {% endif %}
+    </td>
+    <td class="py-3 px-4 text-center">
+        {% if employee.email %}
+            {{ employee.email }}
+        {% endif %}
+    </td>
+    <td class="py-3 px-4 text-center">
+        {% if employee.mobile_phone %}
+            {{ employee.mobile_phone }}
+        {% endif %}
+    </td>
+    <td class="py-3 px-4 text-center">
+        {% if employee.office_coordinates %}
+            {{ employee.office_coordinates }}
+        {% endif %}
+    </td>
+
+</tr>
