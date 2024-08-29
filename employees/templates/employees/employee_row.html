@@ -1,5 +1,4 @@
 <tr class="border-b hover:bg-gray-200">
-
     <td></td>
     <td class="py-3" style="width: 55px;">
         <a href="/employee/{{ employee.id }}">
@@ -23,31 +22,37 @@
             {{ employee.position.name }}
             {% endif %}
         </p>
-
     </td>
     <td class="py-3 px-4 text-center">
-    {% if employee.status %}
-        <div class="inline-flex items-center justify-center h-full">
-            <div class="bg-[{{ employee.status.color }}] text-sm text-white py-1 px-2 rounded-lg w-min whitespace-nowrap">
-                {{ employee.status.name }}
-            </div>
+        <div class="hidden md:block">
+            {% if employee.status %}
+                <div class="inline-flex items-center justify-center h-full">
+                    <div class="bg-[{{ employee.status.color }}] text-sm text-white py-1 px-2 rounded-lg w-min whitespace-nowrap">
+                        {{ employee.status.name }}
+                    </div>
+                </div>
+            {% endif %}
         </div>
-    {% endif %}
     </td>
     <td class="py-3 px-4 text-center">
-        {% if employee.email %}
-            {{ employee.email }}
-        {% endif %}
+        <div class="hidden md:block">
+            {% if employee.email %}
+                {{ employee.email }}
+            {% endif %}
+        </div>
     </td>
     <td class="py-3 px-4 text-center">
-        {% if employee.mobile_phone %}
-            {{ employee.mobile_phone }}
-        {% endif %}
+        <div class="hidden md:block">
+            {% if employee.mobile_phone %}
+                {{ employee.mobile_phone }}
+            {% endif %}
+        </div>
     </td>
     <td class="py-3 px-4 text-center">
-        {% if employee.office_coordinates %}
-            {{ employee.office_coordinates }}
-        {% endif %}
+        <div class="hidden md:block">
+            {% if employee.office_coordinates %}
+                {{ employee.office_coordinates }}
+            {% endif %}
+        </div>
     </td>
-
 </tr>

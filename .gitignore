@@ -3,3 +3,4 @@ media/
 photos/
 __pycache__/
 *.pyc
+db.sqlite3
