@@ -27,6 +27,7 @@ class Position(TimeStampedModel):
 class Department(TimeStampedModel):
     serial_number = models.PositiveIntegerField(verbose_name="Порядковый номер", blank=True, null=True)
     name = models.CharField(max_length=100, unique=True, verbose_name="Название департамента")
+    short_name = models.CharField(blank=True, null=True, default="", max_length=100, verbose_name="Название департамента")
 
     def __str__(self):
         return self.name
